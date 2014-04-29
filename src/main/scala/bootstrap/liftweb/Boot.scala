@@ -57,12 +57,6 @@ class Boot {
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
-    Streamer.loadVideo(
-      Video(
-        "small",
-        mp4 = new File("/root/GoTSe1/gamethrines1e10bd72.Ganool.mkv.mp4"),
-        mkv = new File("/root/GoTSe1/gamethrines1e10bd72.Ganool.mkv")))
-
     // Use HTML5 for rendering
     LiftRules.htmlProperties.default.set((r: Req) =>
       new Html5Properties(r.userAgent))
