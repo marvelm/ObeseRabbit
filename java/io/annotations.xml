@@ -1,0 +1,7 @@
+<root>
+    <item name='java.io.BufferedInputStream long skip(long)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val val="&quot;null -&gt; false&quot;"/>
+        </annotation>
+    </item>
+</root>
