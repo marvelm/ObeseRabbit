@@ -1,6 +1,6 @@
-# Lively
+# ObeseRabbit
 
-Lively is an example of [Lift](http://liftweb.net)'s HTTP streaming capabilities.
+ObeseRabbit is an example of [Lift](http://liftweb.net)'s HTTP streaming capabilities.
 
 I am currently just playing with the **`StreamingResponse`** class to return a chunked response of a video.
 
