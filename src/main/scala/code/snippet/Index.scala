@@ -9,13 +9,14 @@ import code.lib.Streamer
 class Index {
   def render =
     <ul class="list-group">
-      {Streamer.videos.map {
-      video =>
-        <li class="list-group-item">
-          <a href={"/video/" + video._1}>
-            {video._2.title}
-          </a>
-        </li>
-    }}
+      { Streamer.videos.map {
+          video => {
+            <li class="list-group-item">
+              <a href={"/video/" + video._1}>
+                {video._2.title}
+              </a>
+            </li>
+          }
+      } }
     </ul>
 }
