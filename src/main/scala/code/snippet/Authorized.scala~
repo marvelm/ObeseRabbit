@@ -16,8 +16,8 @@ class Authorized {
 
   def titleI = SHtml.onSubmit(title = _)
 
-  def fileI = SHtml.onSubmit(file_ => {
+  def file = SHtml.onSubmit(file_ => {
     printf("Loaded video file(%s) title(%s)", file, title)
-    Streamer.loadVideo(Video(title, new File(file_)))
+    Streamer.loadVideo(Video(title, new File(file_))
   })
 }

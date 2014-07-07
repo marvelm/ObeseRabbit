@@ -1,5 +1,5 @@
 .idea*
 target/
 *.log
-/small.mp4
-/small.webm
+small.mp4
+small.webm

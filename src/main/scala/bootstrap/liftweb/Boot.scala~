@@ -35,10 +35,10 @@ class Boot {
         "Static Content")),
 
       Menu.param[String](
-        "v",
+        "video",
         "Live stream",
         s => Full(s),
-        id => id) / "v" >> Title(id => Text(Streamer.title(id))),
+        id => id) / "video" >> Title(id => Text(Streamer.title(id))),
 
       Menu.i("Authorized") / "authorized")
 

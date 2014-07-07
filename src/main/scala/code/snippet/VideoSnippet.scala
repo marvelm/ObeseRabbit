@@ -11,15 +11,9 @@ import code.lib.Streamer
 class VideoSnippet(id: String) {
   def render(): NodeSeq = {
     if (Streamer.has(id))
-      if (S.isFirefox)
-        <video controls=" ">
-          <source src={"/mp4/" + id} type="video/mp4"/>
-        </video>
-      else
-        <video controls=" ">
-          <source src={"/mp4/" + id} type="video/mp4"/>
-          <source src={"/mkv/" + id} type="video/webm"/>
-        </video>
+      <video controls=" ">
+        <source src={"/mp4/" + id} type="video/mp4"/>
+      </video>
     else
       <div>
         Invalid url

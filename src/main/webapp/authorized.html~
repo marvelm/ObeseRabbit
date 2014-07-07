@@ -7,7 +7,7 @@
   <div>
     <form class="lift:form.ajax">
       <input class="lift:Authorized.titleI" placeholder="title" type="text"/>
-      <input class="lift:Authorized.fileI" placeholder="file path" type="text"/>
+      <input class="lift:Authorized.file" placeholder="MKV" type="text"/>
       <input type="submit" name="submit" value="Add"/>
     </form>
   </div>

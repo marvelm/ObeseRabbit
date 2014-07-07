@@ -5,9 +5,9 @@
 
 <div id="main" class="lift:surround?with=default;at=content">
   <div>
-    <span class="lift:Index.render">
-      List current videos here.
-    </span>
+	<span class="lift:Index.render">
+    List current videos here.
+	</span>
   </div>
 </div>
 
