@@ -4,3 +4,4 @@ target/
 small.mp4
 small.webm
 *~
+out/*

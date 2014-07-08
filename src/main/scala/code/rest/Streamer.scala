@@ -33,13 +33,13 @@ object Streamer extends RestHelper {
     val outFilename = randomString(3)
     val outFile = new File(outDirectory + "/" + outFilename + ".mp4")
     val convertedVideo = Video(v.title, outFile)
-    new Thread { new Runnable(){
+    new Thread {
       override def run() {
         println(s"Converting ${v.file.toString} to ${outFile.toString}")
         println(s"ffmpeg -i ${v.file.toString} -vcodec libx264 -acodec mp3 ${outFile.toString}" !!)
         convertedVideo.conversionCompleted = true
       }
-    } }.start()
+    }.start()
     videos += ((outFilename, convertedVideo))
   }
 
