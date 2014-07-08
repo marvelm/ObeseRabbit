@@ -70,8 +70,9 @@ class Boot {
     LiftRules.statelessDispatch.append(Streamer)
     LiftRules.dispatch
     LiftRules.defaultHeaders = {
+      // Not sure if this actually does anything.
       case _ =>
-        ("Expires" -> new Date().toString) ::
+        ("Expires" -> new Date().toString) :: 
           Nil
     }
   }

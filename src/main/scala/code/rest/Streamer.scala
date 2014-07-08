@@ -11,6 +11,8 @@ import java.io.FileInputStream
 import net.liftweb.http.StreamingResponse
 import scala.Some
 import code.model.Video
+import sys.process._
+import java.io.File
 
 /**
  * @author ssb
@@ -25,8 +27,20 @@ object Streamer extends RestHelper {
   // intersperses the salt within the str then hashes it
   //private def hash(str: String) = SecurityHelpers.hash(str.mkString(salt)).substring(0, 3)
 
+  val outDirectory = "out"
+
   def loadVideo(v: Video) {
-    videos += ((randomString(3), v))
+    val outFilename = randomString(3)
+    val outFile = new File(outDirectory + "/" + outFilename + ".mp4")
+    val convertedVideo = Video(v.title, outFile)
+    new Thread { new Runnable(){
+      override def run() {
+        println(s"Converting ${v.file.toString} to ${outFile.toString}")
+        println(s"ffmpeg -i ${v.file.toString} -vcodec libx264 -acodec mp3 ${outFile.toString}" !!)
+        convertedVideo.conversionCompleted = true
+      }
+    } }.start()
+    videos += ((outFilename, convertedVideo))
   }
 
   def has(id: String) = videos.contains(id)
@@ -36,8 +50,8 @@ object Streamer extends RestHelper {
   private def stream(req: Req, video: Video): Box[(List[(String, String)], InputStream, Long)] = {
     var content_type = ("Content-Type" -> "video/mp4")
     val range: Box[String] = req.header("Range")
-    var start = 0L
-    var end = 0L
+    var start: Long = 0L
+    var end: Long = 0L
     val file = video.file
 
     range match {
@@ -54,7 +68,7 @@ object Streamer extends RestHelper {
       case _ => end = file.length - 1
     }
 
-    end = file.length - 1
+    // end = file.length - 1
 
     val headers =
       ("Connection" -> "close") ::
@@ -87,17 +101,22 @@ object Streamer extends RestHelper {
       video <- videos.get(id)
       stream <- stream(req, video)
     } yield {
-      val headers = stream._1
-      val fis = stream._2
-      val size = stream._3
+      if (video.conversionCompleted) {
+        val headers = stream._1
+        val fis = stream._2
+        val size = stream._3
 
-      StreamingResponse(
-        data = fis,
-        onEnd = fis.close,
-        size,
-        headers,
-        cookies = Nil,
-        code = 206)
+        StreamingResponse(
+          data = fis,
+          onEnd = fis.close,
+          size,
+          headers,
+          cookies = Nil,
+          code = 206
+        )
+      }
+      else
+        PlainTextResponse("The video has not been converted yet")
     }
 
     if (x.isDefined)

@@ -7,4 +7,4 @@ import java.io.File
  *         21/04/14
  */
 
-case class Video(title: String, file: File)
+case class Video(title: String, file: File, var conversionCompleted: Boolean = false)
