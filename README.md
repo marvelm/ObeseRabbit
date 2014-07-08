@@ -9,3 +9,9 @@ Chrome and IOS have been tested. The only difference on the server side is the v
 * Chrome - MKV with a `video/webm` type attribute in the source tag.
 * IOS - MP4 with `video/mp4`
 * The video codec in both cases is h.264 and the audio codec is mp3.
+
+
+# How to use
+1. ./init.sh
+2. sbt
+3. container:start
