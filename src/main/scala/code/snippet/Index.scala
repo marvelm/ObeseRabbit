@@ -1,6 +1,6 @@
 package code.snippet
 
-import code.lib.Streamer
+import code.rest.Streamer
 
 /**
  * @author ssb

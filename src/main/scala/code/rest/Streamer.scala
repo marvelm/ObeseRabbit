@@ -1,4 +1,4 @@
-package code.lib
+package code.rest
 
 import net.liftweb.http._
 import net.liftweb.http.rest.RestHelper
@@ -10,6 +10,7 @@ import java.io.InputStream
 import java.io.FileInputStream
 import net.liftweb.http.StreamingResponse
 import scala.Some
+import code.model.Video
 
 /**
  * @author ssb

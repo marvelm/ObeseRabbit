@@ -1,4 +1,4 @@
-package code.lib
+package code.model
 
 import java.io.File
 

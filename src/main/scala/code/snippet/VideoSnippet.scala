@@ -2,7 +2,7 @@ package code.snippet
 
 import scala.xml.NodeSeq
 import net.liftweb.http.S
-import code.lib.Streamer
+import code.rest.Streamer
 
 /**
  * @author ssb

@@ -3,7 +3,8 @@ package code.snippet
 
 import net.liftweb.util.Helpers._
 import net.liftweb.http.SHtml
-import code.lib.{Video, Streamer}
+import code.model.Video
+import code.rest.Streamer
 import java.io.File
 
 /**

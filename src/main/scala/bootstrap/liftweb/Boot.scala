@@ -10,7 +10,8 @@ import sitemap._
 import Loc._
 import net.liftmodules.JQueryModule
 import net.liftweb.http.js.jquery._
-import code.lib.{Video, Streamer}
+import code.model.Video
+import code.rest.Streamer
 import scala.xml.Text
 import java.io.File
 import java.util.Date
