@@ -13,5 +13,5 @@ Chrome and IOS have been tested. The only difference on the server side is the v
 
 # How to use
 1. ./init.sh
-2. sbt
+2. ./sbt
 3. container:start
