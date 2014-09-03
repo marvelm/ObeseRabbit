@@ -50,25 +50,23 @@ object Streamer extends RestHelper {
   private def stream(req: Req, video: Video): Box[(List[(String, String)], InputStream, Long)] = {
     var content_type = ("Content-Type" -> "video/mp4")
     val range: Box[String] = req.header("Range")
-    var start: Long = 0L
-    var end: Long = 0L
     val file = video.file
 
-    range match {
-      case Full(r) => {
-        start = parseNumber(r.substring(r.indexOf("bytes=") + 6))
-
-        end =
-          if (r.endsWith("-"))
-            file.length - 1
-          else
-            parseNumber(r.substring(r.indexOf("-") + 1))
+    val (start,end) =
+      range match {
+        case Full(r) => {
+          (
+            parseNumber(r.substring(r.indexOf("bytes=") + 6)),
+            {
+              if (r.endsWith("-"))
+                file.length - 1
+              else
+                parseNumber(r.substring(r.indexOf("-") + 1))
+            }
+          )
+        }
+        case _ => (0L, file.length - 1)
       }
-
-      case _ => end = file.length - 1
-    }
-
-    // end = file.length - 1
 
     val headers =
       ("Connection" -> "close") ::
