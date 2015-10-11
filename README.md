@@ -10,8 +10,10 @@ Chrome and IOS have been tested. The only difference on the server side is the v
 * IOS - MP4 with `video/mp4`
 * The video codec in both cases is h.264 and the audio codec is mp3.
 
-
-# How to use
+## How to use
     ./init.sh
     ./sbt
     container:start
+
+## Requirements
+FFmpeg for converting videos
