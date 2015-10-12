@@ -16,4 +16,4 @@ Chrome and IOS have been tested. The only difference on the server side is the v
     container:start
 
 ## Requirements
-FFmpeg for converting videos
+* FFmpeg for converting videos
